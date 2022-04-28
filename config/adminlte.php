@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Gym System</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -108,6 +108,13 @@ return [
     'classes_auth_footer' => '',
     'classes_auth_icon' => '',
     'classes_auth_btn' => 'btn-flat btn-primary',
+    
+//     'classes_auth_card' => 'bg-gradient-dark',
+// 'classes_auth_header' => '',
+// 'classes_auth_body' => 'bg-gradient-dark',
+// 'classes_auth_footer' => 'text-center',
+// 'classes_auth_icon' => 'fa-fw text-light',
+// 'classes_auth_btn' => 'btn-flat btn-light',
 
     /*
     |--------------------------------------------------------------------------
@@ -246,18 +253,30 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text'        => 'Gym Manager',
-            'url'         => 'admin/gym_manager',
-            'icon'        => 'far fa-fw fa-file',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
-        ],
+        // [
+        //     'text'        => 'Gym Manager',
+        //     'url'         => 'admin/gym_manager',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 4,
+        //     'label_color' => 'success',
+        // ],
+        // [
+        //     'text'        => 'City Manager',
+        //     'url'         => 'admin/city_manager',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 4,
+        //     'label_color' => 'success',
+        // ],
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
+            'text' => 'Revenue',
+            'url'  => 'admin/revenue',
+            'icon' => 'fas fa-fw fa-dollar-sign',
+        ],
+        [
+            'text' => 'Admin',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-user-cog',
         ],
         [
             'text' => 'change_password',
@@ -265,42 +284,134 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Cities',
+            'icon'    => 'fas fa-fw fa-city',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'All Cities',
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'level_one',
+                    'text'    => 'Add New City',
                     'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'Restore Deleted City',
                     'url'  => '#',
                 ],
             ],
+        ],
+        [
+            'text'    => 'City Managers',
+            'icon'    => 'fas fa-fw fa-user-tie',
+            'submenu' => [
+                [
+                    'text' => 'All City Managers',
+                    'url'  => '#',
+                ],
+                [
+                    'text'    => 'Add New City Manager',
+                    'url'     => '#',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Gyms',
+            'icon'    => 'fas fa-fw fa-dumbbell',
+            'submenu' => [
+                [
+                    'text' => 'List of Gyms',
+                    'url'  => '#',
+                ],
+                [
+                    'text'    => 'Add New Gym',
+                    'url'     => '#',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Gym Managers',
+            'icon'    => 'fas fa-fw fa-users-cog',
+            'submenu' => [
+                [
+                    'text' => 'List of Gym Managers',
+                    'url'  => '#',
+                ],
+                [
+                    'text'    => 'Add New Gym Manager',
+                    'url'     => '#',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Coaches',
+            'icon'    => 'fas fa-fw fa-user-ninja',
+            'submenu' => [
+                [
+                    'text' => 'List of Coaches',
+                    'url'  => '#',
+                ],
+                [
+                    'text'    => 'Add New Coach',
+                    'url'     => '#',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Users',
+            'icon'    => 'fas fa-fw fa-users',
+            'submenu' => [
+                [
+                    'text' => 'List of Users',
+                    'url'  => '#',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Training Packages',
+            'icon'    => 'fas fa-fw fa-boxes',
+            'submenu' => [
+                [
+                    'text' => 'List of Training Packages',
+                    'url'  => '#',
+                ],
+                [
+                    'text'    => 'Add New Training Package',
+                    'url'     => '#',
+                ],
+                [
+                    'text' => 'Buy Training Package',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Purchase History',
+                    'url'  => '#',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Training Session',
+            'icon'    => 'fas fa-fw fa-box',
+            'submenu' => [
+                [
+                    'text' => 'List of Training Session',
+                    'url'  => '#',
+                ],
+                [
+                    'text'    => 'Add New Training Session',
+                    'url'     => '#',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Attendance',
+            'url'  => 'admin/attendance',
+            'icon' => 'fas fa-fw fa-clipboard-list',
+        ],
+        [
+            'text' => 'Banned Users',
+            'url'  => 'admin/banned_users',
+            'icon' => 'fas fa-fw fa-user-slash',
         ],
         ['header' => 'labels'],
         [
