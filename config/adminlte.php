@@ -307,11 +307,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'All City Managers',
-                    'url'  => '#',
+                    'url'  => '/cityManager/list',
                 ],
                 [
                     'text'    => 'Add New City Manager',
-                    'url'     => '#',
+                    'url'     => '/cityManager/create',
                 ],
             ],
         ],
@@ -321,11 +321,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'List of Gyms',
-                    'url'  => '#',
+                    'url'  => '/gym/list',
                 ],
                 [
                     'text'    => 'Add New Gym',
-                    'url'     => '#',
+                    'url'     => '/gym/create',
                 ],
             ],
         ],
@@ -335,11 +335,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'List of Gym Managers',
-                    'url'  => '#',
+                    'url'  => '/gymManager/list',
                 ],
                 [
                     'text'    => 'Add New Gym Manager',
-                    'url'     => '#',
+                    'url'     => '/gymManager/create',
                 ],
             ],
         ],

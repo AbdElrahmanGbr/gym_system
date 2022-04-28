@@ -9,18 +9,19 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 
-
-
-class GymManagerController extends Controller
+class CityManagerController extends Controller
 {
+
     public function create()
     {
-        return view('gymManager.create', [
+        return view('cityManager.create', [
             'users' => User::all(),
         ]);
     }
+
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'name' => 'required|max:20',
             'password' => 'required |min:6',
@@ -28,6 +29,7 @@ class GymManagerController extends Controller
             'national_id' => 'digits_between:10,17|required|numeric|unique:users',
             'profile_image' => 'nullable|image|mimes:jpg,jpeg',
         ]);
+
         if ($request->hasFile('profile_image') == null) {
             $imageName = 'imgs/defaultImg.jpg';
         } else {
@@ -44,45 +46,43 @@ class GymManagerController extends Controller
         $user->password = $request->password;
         $user->profile_image = $imageName;
         $user->national_id = $request->national_id;
-        $user->assignRole('gymManager');
+        $user->assignRole('cityManager');
         $user->save();
 
-        return redirect()->route('gymManager.list');
+        return redirect()->route('cityManager.list');
     }
 
     public function list()
     {
-        return view("gymManager.list");
+        $usersFromDB =  User::role('cityManager')->withoutBanned()->get();
+        // $usersFromDB = User::all();
+        // $usersFromDB =  User::role('cityManager')->get();
+        if (count($usersFromDB) <= 0) { //for empty statement
+            return view('empty');
+        }
+        return view("cityManager.list", ['users' => $usersFromDB]);
     }
+
     public function show($id)
     {
         $user = User::find($id);
-        return view('gymManager.show', [
+        return view('cityManager.show', [
             'user' => $user,
         ]);
     }
     
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('gymManager.edit', [
-            'user' => $user,
-        ]);
+
     }
 
     public function update($id)
     {
-        $user = User::find($id);
-        return view('gymManager.update', [
-            'user' => $user,
-        ]);
+
     }
-    
-    public function deletegymManager($id)
+
+    public function deletecityManager($id)
     {
-        $user = User::find($id);
-        return view('gymManager.delete', [
-            'user' => $user,
-        ]);
+
     }
 }
